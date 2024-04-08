@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pdk Store - Sua Boutique Digital</title>
+<style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff; /* Modo claro com cor branca */
+      color: #000; /* Cor do texto no modo claro */
+      transition: background-color 0.5s, color 0.5s;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; /* Mantém o rodapé no final da página */
+    } 
+
+    body.dark-mode {
+      background-color: #333; /* Modo escuro com cor cinza */
+      color: #fff; /* Cor do texto no modo escuro */
+    }
+
+    header {
+      background-color: #0f0f0f; /* verde forte */
+      padding: 20px;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    nav {
+      display: flex;
+      flex-direction: row;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      margin: 0 15px;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #555;
+    }
+
+    main {
+      padding: 40px;
+      flex-grow: 1; /* Permite que o conteúdo cresça e empurre o rodapé para baixo */
+    }
+
+    footer {
+      background-color: #0f0f0f; /* verde forte */
+      padding: 20px;
+      color: #fff;
+      text-align: center;
+    }
+
+    /* Restante dos estilos (mantidos inalterados) */
+    .info-box {
+      background-color: #000; /* Cor do quadrado preto */
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      color: #fff; /* Cor do texto dentro do quadrado */
+      transition: transform 0.3s ease-in-out; /* Adiciona uma transição suave de 0.3 segundos */
+    }
+
+    .info-box:hover {
+      transform: scale(1.1); /* Aumenta em 10% quando o mouse passa sobre o quadrado */
+    }
+
+    .info-box h2 {
+      color: #3498db; /* Cor do título dentro do quadrado */
+    }
+
+    .info-box p {
+      color: #fff;
+    }
+
+    .info-box a.button {
+      display: inline-block;
+      background-color: #3498db; /* Cor azul do botão */
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .navbar-icon {
+      display: none;
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+
+    .mode-toggle {
+      display: flex;
+      align-items: center;
+      margin-right: 20px;
+    }
+
+    .mode-toggle button {
+      background-color: #555; /* Cor de destaque para o botão */
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1em;
+      padding: 8px 12px; /* Ajuste o padding conforme necessário */
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .mode-toggle button:hover {
+      background-color: #333; /* Cor de destaque ao passar o mouse */
+    }
+
+    .mode-bar {
+      display: flex;
+      align-items: center;
+      margin-right: 20px;
+    }
+
+    .mode-bar .sun-icon,
+    .mode-bar .moon-icon {
+      font-size: 24px; /* Ajuste o tamanho do emoji conforme necessário */
+      margin-right: 5px;
+      display: none;
+    }
+
+    @media only screen and (max-width: 600px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #0f0f0f; /* verde forte */
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      nav a {
+        display: block;
+        margin: 0;
+        padding: 15px;
+      }
+
+      .navbar-icon {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body class="light-mode">
+<header>
+<h1>Pdk Store</h1>
+<div class="mode-toggle">
+<button onclick="if (!window.__cfRLUnblockHandlers) return false; toggleMode()" data-cf-modified-6a3a5fe94652ac381308caf7-="">Claro/Escuro</button>
+</div>
+<div class="mode-bar">
+<span class="sun-icon" role="img" aria-label="Sol">🌞</span>
+<span class="moon-icon" role="img" aria-label="Lua">🌙</span>
+</div>
+<div class="navbar-icon" onclick="if (!window.__cfRLUnblockHandlers) return false; toggleNavbar()" data-cf-modified-6a3a5fe94652ac381308caf7-="">&#9776;</div>
+<nav>
+<a href="#" onclick="if (!window.__cfRLUnblockHandlers) return false; changePage('Home')" data-cf-modified-6a3a5fe94652ac381308caf7-="">Home</a>
+<a href="#" onclick="if (!window.__cfRLUnblockHandlers) return false; changePage('Comprar Bots')" data-cf-modified-6a3a5fe94652ac381308caf7-="">Comprar Bots</a>
+</nav>
+</header>
+<main>
+<h2 id="page-title">Bem-vindo à Pdk Store</h2>
+<p id="page-content">
+  "É um prazer recebê-lo em nosso espaço dedicado ao seu conforto e satisfação. Aqui na nossa loja, não é apenas sobre produtos, é sobre criar uma experiência memorável para você.
+
+  Explore nossos corredores com curadoria cuidadosa, repletos de itens selecionados para atender às suas necessidades e desejos. Desde as últimas tendências até os clássicos atemporais, temos algo especial para todos os gostos.
+  
+  Nossa equipe está aqui para ajudá-lo a encontrar exatamente o que procura e garantir que sua visita seja nada menos que excepcional. Seja para uma compra rápida ou uma jornada de descoberta, estamos aqui para tornar sua experiência de compra simplesmente incrível.
+  
+  Obrigado por escolher nossa loja. Estamos ansiosos para servi-lo e tornar cada visita memorável. Aproveite sua estadia conosco!
+</p>
+</main>
+<footer>
+&copy; 2024 Pdk Store. Todos os direitos reservados.
+</footer>
+<script type="6a3a5fe94652ac381308caf7-text/javascript">
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+      updateModeIcons();
+    }
+
+    function updateModeIcons() {
+      const sunIcon = document.querySelector('.sun-icon');
+      const moonIcon = document.querySelector('.moon-icon');
+      const isDarkMode = document.body.classList.contains('dark-mode');
+
+      if (isDarkMode) {
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'inline-block';
+      } else {
+        sunIcon.style.display = 'inline-block';
+        moonIcon.style.display = 'none';
+      }
+    }
+
+    function toggleNavbar() {
+      document.querySelector('nav').classList.toggle('show');
+    }
+
+    function changePage(page) {
+      const titleElement = document.getElementById('page-title');
+      const contentElement = document.getElementById('page-content');
+
+      toggleNavbar(); // Fechar o menu após clicar em um link
+
+      switch (page) {
+        case 'Home':
+          titleElement.innerText = 'Bem-vindo à Pdk Store';
+          contentElement.innerHTML = '<p>É um prazer recebê-lo em nosso espaço dedicado ao seu conforto e satisfação. Aqui na nossa; somos uma boutique digital dedicada a aprimorar a experiência no Discord através de soluções tecnológicas sofisticadas e inovadoras.</p>' +
+                                      '<p>Nossa loja é um oásis para aqueles que buscam a excelência em serviços de Streamings e nitros e ate otimizaçoes para seu computador. Cada um de nossos produtos é meticulosamente desenvolvido para proporcionar eficiência, confiabilidade e uma experiência única aos usuários. Nossos bots são a síntese da elegância tecnológica, projetados para simplificar e aprimorar suas interações em servidores Discord.</p>' +
+                                      '<p>Ao escolher nossos serviços, você não apenas adquire uma ferramenta, mas sim uma parceria na busca pela excelência digital. Cada linha de código é um compromisso com a qualidade, e cada funcionalidade é um testemunho de nossa dedicação ao aperfeiçoamento contínuo.</p>' +
+                                      '<p>Explore nossas ofertas e descubra como os bots da Pdk Store podem elevar sua experiência no Discord a novos patamares. Permita-nos acompanhá-lo em sua jornada digital, onde cada comando é uma oportunidade para aprimorar, automatizar e simplificar.</p>' +
+                                      '<p>Seja bem-vindo à Pdk Store, onde a excelência se encontra com a inovação. Sua busca por serviços superiores para Discord começa e termina aqui.</p>';
+          break;
+        case 'Comprar Bots':
+          titleElement.innerText = 'Adquirir Serviços';
+          contentElement.innerHTML = '<div class="info-box">' +
+                                      '<h2>Serviços de streamings etc...</h2>' +
+                                      '<p>Adquira nossos serviços de Streamings etc avançado.Aumente a eficiência e economize tempo!</p>' +
+                                      '<a href="https://discord.gg/AbJTf9FFGU" class="button">Adquirir</a>' +
+                                      '</div>' +
+                                      '<div class="info-box">' +
+                                      '<h2>Bot Ticket</h2>' +
+                                      '<p>Oferecemos uma solução eficiente para suas necessidades de suporte ao cliente.</p>' +
+                                      '<a href="https://discord.gg/AbJTf9FFGU" class="button">Adquirir</a>' +
+                                      '</div>';
+          break;
+        default:
+          break;
+      }
+    }
+
+    // Atualizando os ícones de modo ao carregar a página
+    updateModeIcons();
+  </script>
+<script src="cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="6a3a5fe94652ac381308caf7-|49" defer=""></script></body>
+</html>
