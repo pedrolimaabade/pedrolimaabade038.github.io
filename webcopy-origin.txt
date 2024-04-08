@@ -1,0 +1,8 @@
+Uri: https://mysteryapplications.squareweb.app/
+File Name: C:\Downloaded Web Sites\mysteryapplications.squareweb.app\index.htm
+Content Type: text/html
+
+Uri: https://mysteryapplications.squareweb.app/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js
+File Name: C:\Downloaded Web Sites\mysteryapplications.squareweb.app\cdn-cgi\scripts\7d0fa10a\cloudflare-static\rocket-loader.min.js
+Content Type: application/javascript
+
